@@ -1,0 +1,11 @@
+dotenv
+requests
+confluent-kafka
+cloudant
+ibmcloudant
+ibm_watsonx_ai
+langchain-ibm
+load_dotenv
+black
+langgraph-swarm
+pillow
