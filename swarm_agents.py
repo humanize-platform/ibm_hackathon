@@ -35,9 +35,9 @@ model = ChatWatsonx(
 
 # Tool to search data from IBM Cloudant DB against the query
 def searchWaterData(query: str):
-    """ You will retrieve data from IBM Cloudant database against user's query on water utilization 
+    """ You will retrieve data from IBM Cloudant database against user's query on his water utilization 
     and leakage analysis. You will receive JSON formatted data. 
-    If you dont know the answerm just say that. Dont try to generate arbitrarily."""
+    If you dont know the answer just say that. Dont try to generate arbitrarily."""
     return query_cloudant(query);
 
 def getDBQueryString(userQry: str):
@@ -47,8 +47,10 @@ def getDBQueryString(userQry: str):
 
 # Too to crawl few websites and fetch generic weter related questions
 def referWaterGuidlines(query: str):
-    """ You will crawl few websites and fetch generic weter related questions which user asks for. 
-    If you dont know the answerm just say that. Dont try to generate arbitrarily."""
+    """ You will retrieve generic weter related questions which user asks for. 
+    These questions are NOT related to user's personal consumptions, 
+    rather on generic guidelines and vision from United Nations and World Health Org.
+    If you dont know the answer just say that. Dont try to generate arbitrarily."""
     return getDataFromChroma(query)
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
