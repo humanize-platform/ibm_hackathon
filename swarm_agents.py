@@ -4,6 +4,7 @@ import os
 import io
 from dotenv import load_dotenv
 import uuid
+from PIL import Image
 
 import system_prompt
 load_dotenv()
@@ -38,44 +39,48 @@ def searchWaterData(query: str):
     If you dont know the answerm just say that. Dont try to generate arbitrarily."""
     return query_cloudant(query);
 
+def getDBQueryString(userQry: str):
+    # Create IBM Cloudant compatable sql against the user query
+    pass
+
 
 # Too to crawl few websites and fetch generic weter related questions
-def referWaterGuidlines():
+def referWaterGuidlines(query: str):
     """ You will crawl few websites and fetch generic weter related questions which user asks for. 
     If you dont know the answerm just say that. Dont try to generate arbitrarily."""
     return "water is purified"
 
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
-transfer_to_SearchWebAgent = create_handoff_tool(
-    agent_name="SearchWebAgent",
-    description="Transfer user to the SearchWebAgent assistant that can search for water docs over web.",
+transfer_to_WaterGuidelineRetriever = create_handoff_tool(
+    agent_name="WaterGuidelineRetriever",
+    description="Transfer user to the WaterGuidelineRetriever assistant that can search for water docs over web.",
 )
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
-transfer_to_SearchDBAgent = create_handoff_tool(
-    agent_name="SearchDBAgent",
-    description="Transfer user to the SearchDBAgent assistant that can search for database for invidual water consumption data.",
+transfer_to_WaterUsageRetriever = create_handoff_tool(
+    agent_name="WaterUsageRetriever",
+    description="Transfer user to the WaterUsageRetriever assistant that can search for database for invidual water consumption data.",
 )
 
-search_db_agent = create_react_agent(
+search_water_usage_agent = create_react_agent(
     model,
-    [searchWaterData, transfer_to_SearchWebAgent],
-    prompt=system_prompt.prompt_search_db_agent,
-    name="SearchDBAgent",
+    [searchWaterData, transfer_to_WaterGuidelineRetriever],
+    prompt=system_prompt.prompt_search_water_usage,
+    name="WaterUsageRetriever",
 )
 
-search_web_agent = create_react_agent(
+search_water_guideline_agent = create_react_agent(
     model,
-    [referWaterGuidlines, transfer_to_SearchDBAgent],
-    prompt=system_prompt.prompt_search_web_agent,
-    name="SearchWebAgent",
+    [referWaterGuidlines, transfer_to_WaterUsageRetriever],
+    prompt=system_prompt.prompt_search_water_guideline,
+    name="WaterGuidelineRetriever",
 )
 
 checkpointer = InMemorySaver()
 
 workflow = create_swarm(
-    [search_db_agent, search_web_agent], default_active_agent="SearchDBAgent"
+    [search_water_usage_agent, search_water_guideline_agent], default_active_agent="WaterUsageRetriever"
 )
 
 app = workflow.compile(checkpointer=checkpointer)
@@ -88,3 +93,8 @@ def get_config():
 
 # Example of invoking the app with a dynamic thread ID
 config = get_config()
+
+# Generate workflow diagram
+image_bytes = app.get_graph().draw_mermaid_png()
+image = Image.open(io.BytesIO(image_bytes))
+image.save("water_agents.png")
