@@ -18,3 +18,45 @@ prompt_search_water_guideline = """You are SearchWebAgent, an expert in searchin
     - Asking to generate charts on personal water consumptions.
     - Asking to send notification on personal water consumptions.
      """
+
+prompt_nlp_to_nosql_change = """
+
+Convert the following natural language user query to a valid IBM Cloudant NoSQL query.
+
+User Query: {user_query}
+
+1️⃣ Return only valid NOSQL COde without explanations, markdown, or additional text.
+2️⃣ **Field Matching**: 
+   - If a field is not explicitly mentioned, assume `{ "field_name": { "$exists": true } }`.
+   - Convert "in [values]" or "among [values]" to `{ "field_name": { "$in": [values] } }`.
+   - Convert "not in [values]" to `{ "field_name": { "$nin": [values] } }`.
+3️⃣ **Comparison Operators**: 
+   - `>` → `{ "field_name": { "$gt": value } }`
+   - `<` → `{ "field_name": { "$lt": value } }`
+   - `>=` → `{ "field_name": { "$gte": value } }`
+   - `<=` → `{ "field_name": { "$lte": value } }`
+   - `!=` → `{ "field_name": { "$ne": value } }`
+4️⃣ **Logical Operators**:
+   - "either/or" → `$or`
+   - "both" or "and" → `$and`
+   - "not" → `$not`
+   - "none of" → `$nor`
+5️⃣ **Text Matching**:
+   - For exact match, use `{ "field": "value" }`
+   - For partial matches or fuzzy searches, use `{ "field": { "$regex": "value", "$options": "i" } }`
+6️⃣ **Dates and Months Handling**:
+   - Convert month names ("June") to numeric values (`6`).
+   - Convert "last 3 months" into a proper `$gte` filter based on today’s date.
+7️⃣ **Sorting & Limits**:
+   - If a query mentions "top 5" or "highest", include `{ "$orderby": { "field": -1 }, "$limit": 5 }`.
+   - If a query mentions "lowest", use `{ "$orderby": { "field": 1 } }`.
+8️⃣ **Defaults & Safety**:
+   - If no filters are mentioned, assume `{ "field": { "$exists": true } }`.
+   - Handle plural/singular variations like "users" → `"user"` field.
+
+Return only the JSON-formatted NoSQL query.  
+Do not include any explanation, text, or markdown formatting like ```json.  
+Only output the raw JSON object.  
+If a valid NoSQL query cannot be generated, return only: null
+
+"""

@@ -10,17 +10,17 @@ load_dotenv()
 
 # URLs to fetch
 urls = [
-    'https://www.un.org/en/global-issues/water',
-    'https://www.who.int/news-room/fact-sheets/detail/drinking-water',
-    'https://www.unicef.org/wash/water',
-    'https://www.who.int/health-topics/water-sanitation-and-hygiene-wash#tab=tab_1',
-    'https://www.un.org/en/observances/water-day'
+    "https://www.un.org/en/global-issues/water",
+    "https://www.who.int/news-room/fact-sheets/detail/drinking-water",
+    "https://www.unicef.org/wash/water",
+    "https://www.who.int/health-topics/water-sanitation-and-hygiene-wash#tab=tab_1",
+    "https://www.un.org/en/observances/water-day",
 ]
 
 # PDFs to process (Update this list with actual file paths)
 pdf_files = [
     "./docs/SDG-6-Summary-Progress-Update-2021_Version-July-2021a.pdf",
-    "./docs/WGIIAR5-Chap3_FINAL.pdf"
+    "./docs/WGIIAR5-Chap3_FINAL.pdf",
 ]
 
 # Load documents from URLs
@@ -37,7 +37,9 @@ for pdf in pdf_files:
         print(f"Warning: PDF file not found - {pdf}")
 
 # Split documents
-text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=256, chunk_overlap=64)
+text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+    chunk_size=256, chunk_overlap=64
+)
 doc_splits = text_splitter.split_documents(docs_list)
 
 # Initialize Watsonx embeddings
@@ -53,7 +55,7 @@ vectorstore = Chroma.from_documents(
     documents=doc_splits,
     collection_name="agentic-rag-chroma",
     embedding=embeddings,
-    persist_directory="./chroma_db"
+    persist_directory="./chroma_db",
 )
 
 print("Chroma vector store updated with URLs and PDFs!")

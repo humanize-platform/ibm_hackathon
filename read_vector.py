@@ -1,4 +1,3 @@
-
 from langchain_ibm import WatsonxEmbeddings
 from ibm_watsonx_ai.foundation_models.utils.enums import EmbeddingTypes
 from langchain_chroma import Chroma
@@ -20,7 +19,7 @@ embeddings = WatsonxEmbeddings(
 vectorstore = Chroma(
     collection_name="agentic-rag-chroma",  # Ensure the collection name matches what was used before
     embedding_function=embeddings,
-    persist_directory="./chroma_db"
+    persist_directory="./chroma_db",
 )
 
 retriever = vectorstore.as_retriever()
@@ -31,7 +30,7 @@ prompt_template = """
         Question: {question}
         Your answer:
         """
-        
+
 prompt = ChatPromptTemplate.from_template(prompt_template)
 
 parameters = {
@@ -50,20 +49,30 @@ model = ChatWatsonx(
     params=parameters,
 )
 
+
 def getDataFromChroma(question: str):
     chain = (
-            {"context": retriever, "question": RunnablePassthrough()}
-            | prompt
-            | model
-            | StrOutputParser()
-        )
+        {"context": retriever, "question": RunnablePassthrough()}
+        | prompt
+        | model
+        | StrOutputParser()
+    )
     return chain.invoke(question)
 
-print(getDataFromChroma("How many people still lack access to safely managed drinking water services as per WHO/UNICEF?"))
+
+print(
+    getDataFromChroma(
+        "How many people still lack access to safely managed drinking water services as per WHO/UNICEF?"
+    )
+)
 print("*************")
 print(getDataFromChroma("List down the Water-related challenges as mentioned by UN"))
 print("*************")
-print(getDataFromChroma("How many people do not have access to basic sanitation facilities such as toilets or latrines?"))
+print(
+    getDataFromChroma(
+        "How many people do not have access to basic sanitation facilities such as toilets or latrines?"
+    )
+)
 print("*************")
 print(getDataFromChroma("What are the Key messages for World Water Day 2025?"))
 print("*************")

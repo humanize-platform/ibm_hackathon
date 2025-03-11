@@ -7,13 +7,13 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# ✅ IBM Cloudant Credentials (Now loaded from .env for security)
+# IBM Cloudant Credentials (Now loaded from .env for security)
 CLOUDANT_APIKEY = os.getenv("CLOUDANT_APIKEY")
 CLOUDANT_URL = os.getenv("CLOUDANT_URL")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
 
 
-# ✅ Function to Authenticate and Get IAM Token
+# Function to Authenticate and Get IAM Token
 def get_iam_token():
     IAM_URL = "https://iam.cloud.ibm.com/identity/token"
     auth_response = requests.post(
@@ -29,9 +29,12 @@ def get_iam_token():
     return auth_response.json()["access_token"]
 
 
-# ✅ Function to Query Cloudant
-def query_cloudant(selector):
+# Function to Query Cloudant
+def search_cloudant(selector):
     """Query IBM Cloudant using a given selector and return results."""
+
+    print("Trying to search cloudant based on the query below...")
+    print(selector)
 
     # Get IAM Token
     iam_token = get_iam_token()
@@ -49,10 +52,10 @@ def query_cloudant(selector):
     return list(query_result)  # Convert cursor to list
 
 
-# ✅ Example Usage (Only runs if executed directly)
+# Example Usage (Only runs if executed directly)
 if __name__ == "__main__":
     sample_query = {"flow_rate": {"$lt": 5}}  # Example: Fetch flow rates < 5
-    results = query_cloudant(sample_query)
+    results = search_cloudant(sample_query)
     print(json.dumps(results, indent=2))  # Pretty-print results
 
     # from cloudant_search import query_cloudant
