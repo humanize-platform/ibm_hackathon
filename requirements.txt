@@ -9,3 +9,8 @@ load_dotenv
 black
 langgraph-swarm
 pillow
+langchain_community
+langchain_core
+chromadb
+tiktoken
+bs4

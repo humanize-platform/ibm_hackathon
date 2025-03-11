@@ -95,6 +95,6 @@ def get_config():
 config = get_config()
 
 # Generate workflow diagram
-image_bytes = app.get_graph().draw_mermaid_png()
-image = Image.open(io.BytesIO(image_bytes))
-image.save("water_agents.png")
+#image_bytes = app.get_graph().draw_mermaid_png()
+#image = Image.open(io.BytesIO(image_bytes))
+#image.save("water_agents.png")

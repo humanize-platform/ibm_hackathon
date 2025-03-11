@@ -1,5 +1,4 @@
 Generate SQL based on user input and send that to searchWaterData
-Create store for referWaterGuidlines through few URLs. RAG implementation.
 Create a tool for chart generation
 Create a new agent for notification. Create tools. Use Twillio whatsapp SDK.
 Create Streamlit based chat interface.
