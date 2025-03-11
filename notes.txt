@@ -2,6 +2,7 @@ Generate SQL based on user input and send that to searchWaterData
 Create a tool for chart generation
 Create a new agent for notification. Create tools. Use Twillio whatsapp SDK.
 Create Streamlit based chat interface.
+Add langsmith.
 Deploy the app.
 While pushing data to Kafka, mention the room name (kictchen, bathroom, wash-basin, garrage)
 

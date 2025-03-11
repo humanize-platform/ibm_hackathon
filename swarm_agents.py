@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import uuid
 from PIL import Image
 
+from read_vector import getDataFromChroma
 import system_prompt
 load_dotenv()
 
@@ -48,8 +49,7 @@ def getDBQueryString(userQry: str):
 def referWaterGuidlines(query: str):
     """ You will crawl few websites and fetch generic weter related questions which user asks for. 
     If you dont know the answerm just say that. Dont try to generate arbitrarily."""
-    return "water is purified"
-
+    return getDataFromChroma(query)
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
 transfer_to_WaterGuidelineRetriever = create_handoff_tool(

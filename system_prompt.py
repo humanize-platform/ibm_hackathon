@@ -9,8 +9,8 @@ prompt_search_water_usage = """You are SearchDBAgent, an expert in searching dat
 
 prompt_search_water_guideline = """You are SearchWebAgent, an expert in searching Generic information on Clean Water and Sanitation,
     on addressing issues of water scarcity and quality globally as covered by United Nations unders SDG 6.
-    Call referWaterGuidlines to access web documents on clean water and sanitation guideline 
-    as published by United Nations and World Health Organization. This is used more of generic awarenss building.
+    Call referWaterGuidlines to access multiple documents on clean water and sanitation guideline. Do a reasearch and respond to user. 
+    This is used more of generic awarenss building.
     
     WHEN TO USE TRANSFER:
     Transfer to SearchDBAgent if the user is asking about:

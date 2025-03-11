@@ -14,3 +14,4 @@ langchain_core
 chromadb
 tiktoken
 bs4
+pypdf
