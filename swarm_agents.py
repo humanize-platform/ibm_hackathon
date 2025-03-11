@@ -1,10 +1,12 @@
 from cloudant_search import query_cloudant
-from langchain_ibm import ChatWatsonx
+from langchain_ibm import ChatWatsonx, WatsonxLLM
 import os
 import io
 from dotenv import load_dotenv
 import uuid
 from PIL import Image
+
+
 
 from read_vector import getDataFromChroma
 import system_prompt
@@ -40,9 +42,46 @@ def searchWaterData(query: str):
     If you dont know the answer just say that. Dont try to generate arbitrarily."""
     return query_cloudant(query);
 
+
+def clean_nosql_response(raw_response: str) -> str:
+    # Strip leading/trailing whitespace and remove code fences
+    cleaned = raw_response.strip()
+    
+    if cleaned.startswith("```json"):
+        cleaned = cleaned[len("```json"):].strip()
+    
+    if cleaned.endswith("```"):
+        cleaned = cleaned[:-3].strip()
+
+    return cleaned
+
+
 def getDBQueryString(userQry: str):
-    # Create IBM Cloudant compatable sql against the user query
-    pass
+    # Create IBM Cloudant compatible SQL against the user query
+    filled_prompt = system_prompt.prompt_nlp_to_nosql_change.replace("{user_query}", userQry)
+
+    granite_model = WatsonxLLM(
+        model_id="ibm/granite-8b-code-instruct",
+        url="https://us-south.ml.cloud.ibm.com",
+        project_id=os.getenv("WATSONX_PROJECTKEY"),
+        params={
+            "decoding_method": "sample",
+            "max_new_tokens": 200,
+            "min_new_tokens": 10,
+            "temperature": 0.3,
+            "top_k": 40,
+            "top_p": 0.9,
+        },
+    )
+
+    response = granite_model.invoke(filled_prompt)
+
+    # If it's an AIMessage or BaseMessage object with .content, extract it
+    try:
+        cleaed_response = clean_nosql_response(response.content)
+        return cleaed_response
+    except AttributeError:
+        return clean_nosql_response(response)
 
 
 # Too to crawl few websites and fetch generic weter related questions
