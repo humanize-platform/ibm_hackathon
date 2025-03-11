@@ -19,9 +19,9 @@ prompt_search_water_guideline = """You are SearchWebAgent, an expert in searchin
     - Asking to send notification on personal water consumptions.
      """
 
-prompt_nlp_to_nosql_changev1 = """
-You are an AI that translates natural language queries into **valid** MongoDB queries for IBM Cloudant. Follow these rules strictly:
+prompt_nlp_to_nosql_change = """
 
+Convert the following natural language query to a valid IBM Cloudant NoSQL query.
 1️⃣ Return only valid NOSQL COde without explanations, markdown, or additional text.
 2️⃣ **Field Matching**: 
    - If a field is not explicitly mentioned, assume `{ "field_name": { "$exists": true } }`.
@@ -51,13 +51,6 @@ You are an AI that translates natural language queries into **valid** MongoDB qu
    - If no filters are mentioned, assume `{ "field": { "$exists": true } }`.
    - Handle plural/singular variations like "users" → `"user"` field.
 
-Now generate a Mango query for this user query:
-"{user_query}"
-"""
-
-prompt_nlp_to_nosql_change = """
-
-Convert the following natural language query to a valid IBM Cloudant NoSQL query.
 
 User Query:  
 "{user_query}"
