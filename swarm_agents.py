@@ -94,7 +94,8 @@ def notifyUser(notification_message: str):
     Args:
         notification_message (str): Notification message that needs to be sent through WhatsApp.
     """
-    sendWhatsAppMessage(notification_message)
+    #sendWhatsAppMessage(notification_message)
+    pass
 
 
 # Tool to crawl few websites and fetch generic weter related questions

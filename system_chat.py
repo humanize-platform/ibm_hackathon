@@ -22,8 +22,6 @@ def get_user_id():
 def format_response(response_text):
     response_text = response_text.replace("\\n\\n", "\\n")
     response_text = response_text.replace("\\n", "<br>")
-    response_text = re.sub(r"(\d+)\.", r"**\1️⃣**", response_text)
-    response_text = re.sub(r"- ", r"&emsp;&emsp;✅ ", response_text)
     return response_text
 
 
