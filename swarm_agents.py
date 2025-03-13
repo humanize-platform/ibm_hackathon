@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import uuid
 from PIL import Image
 
+from read_cloudant import query_water_data
 from read_vector import getDataFromChroma
 import system_prompt
 from utility import sendWhatsAppMessage
@@ -40,98 +41,44 @@ model = ChatWatsonx(
     params=parameters,
 )
 
-granite_model = WatsonxLLM(
-    model_id="ibm/granite-8b-code-instruct",
-    url="https://us-south.ml.cloud.ibm.com",
-    project_id=os.getenv("WATSONX_PROJECTKEY"),
-    params={
-        "decoding_method": "sample",
-        "max_new_tokens": 200,
-        "min_new_tokens": 10,
-        "temperature": 0.3,
-        "top_k": 40,
-        "top_p": 0.9,
-    },
-)
-
 
 # Tool to search data from IBM Cloudant DB against the query
 def searchWaterData(query: str):
-    """You will retrieve data from IBM Cloudant database against user's query on
-    his water utilization and leakage analysis.
-    You will receive JSON formatted data.
-
-    Args:
-        query (str): User query
-    """
-    pass  # TODO
-
-
-# Tool to detect water leakage in user's system
-def detectLeakage():
-    """You will detect if there is any leakage in user's water system.
-    You will fetch data for last 24hrs and if there is continuous flow detected you will mark that as leakage.
-    If leakage is detected, return from when the leakage started.
-    Otherwise, return 'NO LEAKAGE'.
-    """
-    pass
-
-
-# Tool to calculate total water consumption in user's system
-def getTotalConsumption(query: str):
-    """You will retrieve water data based on user query. You will sum up the pulse count and return that.
-    Args:
-        query (str): _description_
-    """
-    pass
-
-
-# Tool to notify user through WhatsApp
-def notifyUser(notification_message: str):
-    """You will send notification on water consumption and leakage to user's whatsapp number.
-    You will get the notification message from agent and will send that to WhatsApp.
-
-    Args:
-        notification_message (str): Notification message that needs to be sent through WhatsApp.
-    """
-    # sendWhatsAppMessage(notification_message)
-    pass
+    """You will retrieve and analyse user's water consumption data based on user's query."""
+    return query_water_data(query)
 
 
 # Tool to crawl few websites and fetch generic weter related questions
 def referWaterGuidlines(query: str):
     """You will retrieve generic weter related questions which user asks for.
-    These questions are NOT related to user's personal consumptions,
-    rather on generic guidelines and vision from United Nations and World Health Org.
-    If you dont know the answer just say that. Dont try to generate arbitrarily."""
+    You will call RAG with the user's query to retrieve information."""
     return getDataFromChroma(query)
 
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
 transfer_to_WaterGuidelineRetriever = create_handoff_tool(
     agent_name="WaterGuidelineRetriever",
-    description="Transfer user to the WaterGuidelineRetriever assistant that can search for water docs over web.",
+    description="Transfer user to the Water_Guideline_Retriever assistant that can search for water docs.",
 )
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
 transfer_to_WaterUsageRetriever = create_handoff_tool(
     agent_name="WaterUsageRetriever",
-    description="Transfer user to the WaterUsageRetriever assistant that can search for database for invidual water consumption data.",
+    description="Transfer user to the Water_Usage_Retriever assistant that can search for user's water consumption data.",
 )
 
+# React agent (Reason + Act) for Water usage record search
 search_water_usage_agent = create_react_agent(
     model,
     [
         searchWaterData,
-        detectLeakage,
-        getTotalConsumption,
-        notifyUser,
         transfer_to_WaterGuidelineRetriever,
     ],
     prompt=system_prompt.prompt_search_water_usage,
     name="WaterUsageRetriever",
 )
 
+# React agent (Reason + Act) for Water Guideline documents search
 search_water_guideline_agent = create_react_agent(
     model,
     [referWaterGuidlines, transfer_to_WaterUsageRetriever],
