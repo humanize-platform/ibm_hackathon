@@ -35,10 +35,10 @@ prompt = ChatPromptTemplate.from_template(prompt_template)
 
 parameters = {
     "decoding_method": "sample",
-    "max_new_tokens": 100,
+    "max_new_tokens": 500,
     "min_new_tokens": 1,
     "temperature": 0.5,
-    "top_k": 50,
+    "top_k": 100,
     "top_p": 1,
 }
 
@@ -58,23 +58,3 @@ def getDataFromChroma(question: str):
         | StrOutputParser()
     )
     return chain.invoke(question)
-
-
-print(
-    getDataFromChroma(
-        "How many people still lack access to safely managed drinking water services as per WHO/UNICEF?"
-    )
-)
-print("*************")
-print(getDataFromChroma("List down the Water-related challenges as mentioned by UN"))
-print("*************")
-print(
-    getDataFromChroma(
-        "How many people do not have access to basic sanitation facilities such as toilets or latrines?"
-    )
-)
-print("*************")
-print(getDataFromChroma("What are the Key messages for World Water Day 2025?"))
-print("*************")
-print(getDataFromChroma("What is the cryosphere?"))
-print("*************")

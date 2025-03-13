@@ -20,6 +20,10 @@ from langgraph_swarm import create_handoff_tool, create_swarm
 watsonx_api_key = os.getenv("WATSONX_APIKEY")
 os.environ["WATSONX_APIKEY"] = watsonx_api_key
 
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+os.environ["LANGCHAIN_PROJECT"] = "IBM-HACKATHON-HUMANIZE"
+
 parameters = {
     "decoding_method": "sample",
     "max_new_tokens": 100,
@@ -42,7 +46,7 @@ def searchWaterData(query: str):
     """You will retrieve data from IBM Cloudant database against user's query on
     his water utilization and leakage analysis.
     You will receive JSON formatted data.
-    
+
     Args:
         query (str): User query
     """
@@ -51,7 +55,7 @@ def searchWaterData(query: str):
 
 # Tool to detect water leakage in user's system
 def detectLeakage():
-    """ You will detect if there is any leakage in user's water system.
+    """You will detect if there is any leakage in user's water system.
     You will fetch data for last 24hrs and if there is continuous flow detected you will mark that as leakage.
     If leakage is detected, return from when the leakage started.
     Otherwise, return 'NO LEAKAGE'.
@@ -71,8 +75,8 @@ def getTotalConsumption(query: str):
 # Tool to notify user through WhatsApp
 def notifyUser(notification_message: str):
     """You will send notification on water consumption and leakage to user's whatsapp number.
-    You will get the notification message from agent and will send that to WhatsApp. 
-    
+    You will get the notification message from agent and will send that to WhatsApp.
+
     Args:
         notification_message (str): Notification message that needs to be sent through WhatsApp.
     """
