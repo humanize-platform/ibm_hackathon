@@ -64,7 +64,7 @@ def searchWaterData(query: str):
     Args:
         query (str): User query
     """
-    pass #TODO
+    pass  # TODO
 
 
 # Tool to detect water leakage in user's system
@@ -94,7 +94,7 @@ def notifyUser(notification_message: str):
     Args:
         notification_message (str): Notification message that needs to be sent through WhatsApp.
     """
-    #sendWhatsAppMessage(notification_message)
+    # sendWhatsAppMessage(notification_message)
     pass
 
 
