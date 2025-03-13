@@ -54,7 +54,7 @@ def search_cloudant(selector):
 
 # Example Usage (Only runs if executed directly)
 if __name__ == "__main__":
-    sample_query = {"flow_rate": {"$lt": 5}}  # Example: Fetch flow rates < 5
+    sample_query = {"timestamp": {"$gt": "2025-03-10"}}
     results = search_cloudant(sample_query)
     print(json.dumps(results, indent=2))  # Pretty-print results
 

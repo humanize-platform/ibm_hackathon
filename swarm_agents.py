@@ -9,7 +9,7 @@ from PIL import Image
 
 from read_vector import getDataFromChroma
 import system_prompt
-from utility import clean_nosql_response, sendWhatsAppMessage
+from utility import sendWhatsAppMessage
 
 load_dotenv()
 
@@ -40,6 +40,20 @@ model = ChatWatsonx(
     params=parameters,
 )
 
+granite_model = WatsonxLLM(
+    model_id="ibm/granite-8b-code-instruct",
+    url="https://us-south.ml.cloud.ibm.com",
+    project_id=os.getenv("WATSONX_PROJECTKEY"),
+    params={
+        "decoding_method": "sample",
+        "max_new_tokens": 200,
+        "min_new_tokens": 10,
+        "temperature": 0.3,
+        "top_k": 40,
+        "top_p": 0.9,
+    },
+)
+
 
 # Tool to search data from IBM Cloudant DB against the query
 def searchWaterData(query: str):
@@ -50,7 +64,7 @@ def searchWaterData(query: str):
     Args:
         query (str): User query
     """
-    return search_cloudant(getDBQueryString(query))
+    pass #TODO
 
 
 # Tool to detect water leakage in user's system
@@ -83,35 +97,7 @@ def notifyUser(notification_message: str):
     sendWhatsAppMessage(notification_message)
 
 
-def getDBQueryString(userQry: str):
-    # Create IBM Cloudant compatable sql against the user query
-    prompt = ChatPromptTemplate.from_template(system_prompt.prompt_nlp_to_nosql_change)
-    formatted_prompt = prompt.format(user_query=userQry)
-
-    granite_model = WatsonxLLM(
-        model_id="ibm/granite-8b-code-instruct",
-        url="https://us-south.ml.cloud.ibm.com",
-        project_id=os.getenv("WATSONX_PROJECTKEY"),
-        params={
-            "decoding_method": "sample",
-            "max_new_tokens": 200,
-            "min_new_tokens": 10,
-            "temperature": 0.3,
-            "top_k": 40,
-            "top_p": 0.9,
-        },
-    )
-
-    response = granite_model.invoke(formatted_prompt)
-
-    # If it's an AIMessage or BaseMessage object with .content, extract it
-    try:
-        return clean_nosql_response(response.content)
-    except AttributeError:
-        return clean_nosql_response(response)
-
-
-# Too to crawl few websites and fetch generic weter related questions
+# Tool to crawl few websites and fetch generic weter related questions
 def referWaterGuidlines(query: str):
     """You will retrieve generic weter related questions which user asks for.
     These questions are NOT related to user's personal consumptions,

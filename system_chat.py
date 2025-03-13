@@ -11,14 +11,14 @@ st.set_page_config(
 )
 
 
-# ✅ Function to generate and store a unique User ID (U-ID)
+# Function to generate and store a unique User ID (U-ID)
 def get_user_id():
     if "user_id" not in st.session_state:
         st.session_state.user_id = str(uuid.uuid4())  # Generate a unique ID
     return st.session_state.user_id
 
 
-# ✅ Function to format AI response
+# Function to format AI response
 def format_response(response_text):
     response_text = response_text.replace("\\n\\n", "\\n")
     response_text = response_text.replace("\\n", "<br>")
@@ -27,7 +27,7 @@ def format_response(response_text):
     return response_text
 
 
-# ✅ Adjust layout to remove extra white space
+# Adjust layout to remove extra white space
 st.markdown(
     """
     <style>
@@ -42,13 +42,13 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ✅ Initialize chat history
+# Initialize chat history
 if "chat_history" not in st.session_state:
     welcome_message = "Welcome to Water Consumption and Awareness building Assistant! How can I help you today?"
     st.session_state.chat_history = [("assistant", welcome_message)]
 
 
-# ✅ Extract latest Human and AI messages
+# Extract latest Human and AI messages
 def extract_relevant_messages(message_obj):
     if not isinstance(message_obj, str):
         try:
@@ -69,7 +69,7 @@ def extract_relevant_messages(message_obj):
     return last_human_message, last_ai_message
 
 
-# ✅ Chat Function
+# Chat Function
 def chat():
     # Display chat history
     for message in st.session_state.chat_history:
@@ -80,26 +80,26 @@ def chat():
     # Capture user input
     user_input = st.chat_input("Ask a question...")
 
-    # ✅ Dynamic U-ID for each user
+    # Dynamic U-ID for each user
     user_id = get_user_id()
 
-    # ✅ Generate dynamic config per user
+    # Generate dynamic config per user
     config = {"configurable": {"thread_id": user_id}}
 
-    # ✅ Handle user input
+    # Handle user input
     if user_input:
         st.session_state.chat_history.append(("user", user_input))
         with st.chat_message("user"):
             st.markdown(user_input)
 
-        # ✅ Invoke the RAG Agent
+        # Invoke the RAG Agent
         with st.spinner("Thinking..."):
             response = app.invoke(
                 {"messages": [{"role": "user", "content": user_input}]}, config=config
             )
             user_message, final_ai_message = extract_relevant_messages(response)
 
-            # ✅ Display AI response
+            # Display AI response
             if final_ai_message:
                 try:
                     final_ai_message = str(final_ai_message)
@@ -114,7 +114,7 @@ def chat():
                     message_placeholder = st.empty()
                     streamed_response = ""
 
-                    # ✅ Stream response word by word
+                    # Stream response word by word
                     for word in formatted_ai_response.split():
                         streamed_response += word + " "
                         message_placeholder.markdown(

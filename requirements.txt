@@ -12,6 +12,7 @@ pillow
 langchain_community
 langchain_core
 chromadb
+langchain_chroma
 tiktoken
 bs4
 pypdf
