@@ -27,15 +27,13 @@ auth_response.raise_for_status()  # Raise error if authentication fails
 iam_token = auth_response.json()["access_token"]
 headers = {"Authorization": f"Bearer {iam_token}", "Content-Type": "application/json"}
 
-print(headers)
-
 # Kafka Consumer Configuration
 consumer_config = {
-    "bootstrap.servers": "broker-1-kr2k26jl1s2pl3nk.kafka.svc11.us-south.eventstreams.cloud.ibm.com:9093",
+    "bootstrap.servers": os.getenv("KAFKA_BOOTSTRAP_SERVER"),
     "security.protocol": "SASL_SSL",
     "sasl.mechanism": "PLAIN",
     "sasl.username": "token",
-    "sasl.password": "PuDyV6xS7M-PEGA__tjK7puXogq6f0zqVXKsUiQIF0dB",
+    "sasl.password": os.getenv("KAFKA_SSL_PASSWORD"),
     "group.id": "water-consumer-group",
     "auto.offset.reset": "earliest",
     "enable.auto.commit": False,  # Manually commit after insertion
