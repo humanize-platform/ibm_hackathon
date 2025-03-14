@@ -40,6 +40,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+chart_url = "https://dataplatform.cloud.ibm.com/dataview/visualizations/e531dac0-a65a-40f2-8e07-87b6d5c6e88c/exports/default?project_id=df19bec2-95cf-45f4-a536-1cd2af15b881&export_type=html"
+st.markdown(f"[Click here to view the chart 🔗]({chart_url})", unsafe_allow_html=True)
+
 # Initialize chat history
 if "chat_history" not in st.session_state:
     welcome_message = "Welcome to Water Consumption and Awareness building Assistant! How can I help you today?"
