@@ -1,5 +1,10 @@
 # ibm_hackathon
 
+1. Call load_cloudant_in_json.py
+2. Call json_to_sqlite.py
+3. streamlit run system_chat.py
+
+
 ### Add below params in your .env  
 CLOUDANT_APIKEY  
 CLOUDANT_URL  

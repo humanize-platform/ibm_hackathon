@@ -1,420 +1,310 @@
 [
     {
-        "_id": "2bb266b2d0a213cd0fac0add2902d243",
-        "_rev": "1-ab055ce2e9c3c796e4f1c53e0886bc95",
+        "timestamp": "2025-03-14 17:21:52",
+        "flow_rate": 100,
+        "pulses": 100
+    },
+    {
         "timestamp": "2025-03-10 00:24:56",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "2bb266b2d0a213cd0fac0add2902d933",
-        "_rev": "1-71ee447a0a5f5ca15040e9fba41ea7a9",
         "timestamp": "2025-03-10 00:25:07",
         "flow_rate": 0.26666666666666666,
         "pulses": 2
     },
     {
-        "_id": "2bb266b2d0a213cd0fac0add2902e32a",
-        "_rev": "1-8279a5889655275c6c3ddeb4c434e86b",
         "timestamp": "2025-03-10 00:25:09",
         "flow_rate": 0.5333333333333333,
         "pulses": 4
     },
     {
-        "_id": "2bb266b2d0a213cd0fac0add2902e684",
-        "_rev": "1-fe50128f0ddb44fdcc22bec63d5504db",
         "timestamp": "2025-03-10 00:25:11",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "2bb266b2d0a213cd0fac0add2902f012",
-        "_rev": "1-6901b26f2a9ca19b244b89063f19e118",
         "timestamp": "2025-03-10 00:25:24",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa425ffd",
-        "_rev": "1-75eb025c60de8eb33646626e9196bb71",
+        "timestamp": "2025-03-14 17:27:45",
+        "flow_rate": 100,
+        "pulses": 100
+    },
+    {
         "timestamp": "2025-03-10 00:24:53",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa42685d",
-        "_rev": "1-d66c609a5ef2ce573a867ab0db0f687d",
         "timestamp": "2025-03-10 00:25:01",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa426d68",
-        "_rev": "1-e9088559116f46f67492df6649d0038b",
         "timestamp": "2025-03-10 00:25:02",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa42791d",
-        "_rev": "1-bd62e40724d47155bbb280ce7c305a12",
         "timestamp": "2025-03-10 00:25:10",
         "flow_rate": 0.9333333333333333,
         "pulses": 7
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa4283c5",
-        "_rev": "1-ac3e10706c3169cfd7caba395a8ff29f",
         "timestamp": "2025-03-10 00:25:28",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "37893b16c28c6ed47214d0cdaa42938d",
-        "_rev": "1-20eb7006e62086832f3d7499d3308413",
         "timestamp": "2025-03-10 00:25:34",
         "flow_rate": 0.26666666666666666,
         "pulses": 2
     },
     {
-        "_id": "48ec89a0c2ae79a0d7d131b06f89a4bd",
-        "_rev": "1-f76f2edf132f2c1efeae79945c3124c5",
         "timestamp": "2025-03-10 00:24:51",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "48ec89a0c2ae79a0d7d131b06f89bd2b",
-        "_rev": "1-b008fbe451637acf8aa4aa06f0a9d5ba",
         "timestamp": "2025-03-10 00:24:59",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "48ec89a0c2ae79a0d7d131b06f89c1b9",
-        "_rev": "1-a986c1e8c11559f50e719579e78644c4",
         "timestamp": "2025-03-10 00:25:00",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "48ec89a0c2ae79a0d7d131b06f89c9cb",
-        "_rev": "1-9b1a5dff924c0f4e59f8d27620796a82",
         "timestamp": "2025-03-10 00:25:23",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "48ec89a0c2ae79a0d7d131b06f89cc2e",
-        "_rev": "1-48fd0bcd8c6d74aa4a09e2c6d3a2fd5c",
         "timestamp": "2025-03-10 00:25:31",
         "flow_rate": 0.5333333333333333,
         "pulses": 4
     },
     {
-        "_id": "4ae7290fcd915aa5636691ba676d4022",
-        "_rev": "1-68a751e5954b4046934384427e6988ab",
         "timestamp": "2025-03-10 00:24:35",
         "flow_rate": 1.4666666666666666,
         "pulses": 11
     },
     {
-        "_id": "4ae7290fcd915aa5636691ba676d6355",
-        "_rev": "1-aa95aa6e1efd9e8c7f14a999526e637a",
         "timestamp": "2025-03-10 00:24:54",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "4ae7290fcd915aa5636691ba676d71bf",
-        "_rev": "1-b6dd837386a91e8ff9616c37a68aa240",
         "timestamp": "2025-03-10 00:24:57",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "4ae7290fcd915aa5636691ba676d794c",
-        "_rev": "1-5d92642ff65eddc6c2cde9d4511a1f23",
         "timestamp": "2025-03-10 00:25:03",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "4ae7290fcd915aa5636691ba676da3c1",
-        "_rev": "1-a35b51f87203566c442413562f8b0d7f",
         "timestamp": "2025-03-10 00:25:26",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee36a79c",
-        "_rev": "1-c1addee031afccd2ee4026a1e2712738",
         "timestamp": "2025-03-10 00:15:52",
         "flow_rate": 100,
         "pulses": 100
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee392826",
-        "_rev": "1-415bbc81437f1bf12e0196ad8dc85bf3",
         "timestamp": "2025-03-10 00:24:38",
         "flow_rate": 0.13333333333333333,
         "pulses": 1
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee39332a",
-        "_rev": "1-1009daec78c8973eaa4bf9e3a6005586",
         "timestamp": "2025-03-10 00:24:42",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee393cd7",
-        "_rev": "1-301a5f9a1c1c78fd8b25dda4c9217333",
         "timestamp": "2025-03-10 00:24:44",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee3949ef",
-        "_rev": "1-d1b89b352897fc1312aa8fcff2458d51",
         "timestamp": "2025-03-10 00:25:12",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee394d02",
-        "_rev": "1-4f8d89d63879b4a42182dc458b8702d9",
         "timestamp": "2025-03-10 00:25:13",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee395062",
-        "_rev": "1-691c1c05a4d9651697bca2c90489d082",
         "timestamp": "2025-03-10 00:25:16",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "6f482679a2638808a8f4c8ceee3956d6",
-        "_rev": "1-d03f19b0a54e77ab8f85054e9a8225cc",
         "timestamp": "2025-03-10 00:25:33",
         "flow_rate": 0.13333333333333333,
         "pulses": 1
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab3e1e6",
-        "_rev": "1-739b3b838b1135bef2c274c75fb775af",
         "timestamp": "2025-03-10 00:24:47",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab3e40d",
-        "_rev": "1-b994ad685c5d1597f6ad46a634fbbe4a",
         "timestamp": "2025-03-10 00:24:50",
         "flow_rate": 0.6666666666666666,
         "pulses": 5
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab3eb26",
-        "_rev": "1-90380ed473486a36a04e621f15f85b3f",
         "timestamp": "2025-03-10 00:24:52",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab3fc20",
-        "_rev": "1-7f0526777d0b956cebf675aea4501d4b",
         "timestamp": "2025-03-10 00:25:06",
         "flow_rate": 0.26666666666666666,
         "pulses": 2
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab41661",
-        "_rev": "1-4c547073bcf3db73ddfd00abb90c7951",
         "timestamp": "2025-03-10 00:25:19",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab4253d",
-        "_rev": "1-8efd2183d251aa344a31d2aa017a1d4a",
         "timestamp": "2025-03-10 00:25:20",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab42a1f",
-        "_rev": "1-8e1d3802e43971db67be170fed4ba0fa",
         "timestamp": "2025-03-10 00:25:21",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab43c56",
-        "_rev": "1-dc1ee844a1187ae043d12c7cd934920c",
         "timestamp": "2025-03-10 00:25:25",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab44912",
-        "_rev": "1-64219bc93535c7b4dfc75a0ce761fd62",
         "timestamp": "2025-03-10 00:25:30",
         "flow_rate": 0.8,
         "pulses": 6
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab44c01",
-        "_rev": "1-d63b5ed393226023d6d3de3b74e5ffb3",
         "timestamp": "2025-03-10 00:25:36",
         "flow_rate": 0.4,
         "pulses": 3
     },
     {
-        "_id": "90ab4969d880d84a4d25fd810ab456a8",
-        "_rev": "1-d3e0646841855c17223abffed3aa2f86",
         "timestamp": "2025-03-10 00:25:37",
         "flow_rate": 0.6666666666666666,
         "pulses": 5
     },
     {
-        "_id": "976af57d232ced305c421a380b9ee9bb",
-        "_rev": "1-af29d421ec37d06f3959a368038c63f1",
         "timestamp": "2025-03-10 00:25:14",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "976af57d232ced305c421a380b9ef452",
-        "_rev": "1-90f3f334945bb98e1aeb704923c54069",
         "timestamp": "2025-03-10 00:25:29",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "976af57d232ced305c421a380b9f07f2",
-        "_rev": "1-314440691161d27e746b027dce4d556b",
         "timestamp": "2025-03-10 00:25:38",
         "flow_rate": 0.6666666666666666,
         "pulses": 5
     },
     {
-        "_id": "a0e47c30d6cc2955b7b41419028e8fb9",
-        "_rev": "1-e90eb2fd5b6bbc4df0ae0b4e27a1de9a",
         "timestamp": "2025-03-10 00:25:04",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "a0e47c30d6cc2955b7b41419028e9b7d",
-        "_rev": "1-07e7065c949eebbceb0c4999e3dcf23f",
         "timestamp": "2025-03-10 00:25:08",
         "flow_rate": 0.6666666666666666,
         "pulses": 5
     },
     {
-        "_id": "a2df341a5b1addee44d1b36150f813bc",
-        "_rev": "1-24b5a69f95ed6c6749c467e19178d5b9",
         "timestamp": "2025-03-10 00:24:39",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "a2df341a5b1addee44d1b36150f8363c",
-        "_rev": "1-9dd0bde632b91e1699fbfacd209e60b3",
         "timestamp": "2025-03-10 00:24:43",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "a2df341a5b1addee44d1b36150f86419",
-        "_rev": "1-08c48bb27273cd526d73b2d88c2ae290",
         "timestamp": "2025-03-10 00:25:32",
         "flow_rate": 0.6666666666666666,
         "pulses": 5
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d0a49",
-        "_rev": "1-cfb90fe58f505790ef6de15c70262f58",
         "timestamp": "2025-03-10 00:24:46",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d19a5",
-        "_rev": "1-f122d34c57330ab8a1970bb996d6509a",
         "timestamp": "2025-03-10 00:24:55",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d2763",
-        "_rev": "1-01a4c99c4caab52aa804a1ca5b30a09a",
         "timestamp": "2025-03-10 00:24:58",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d3cba",
-        "_rev": "1-7d00dd02df9b098de167f91aa84ec8d2",
         "timestamp": "2025-03-10 00:25:18",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d4822",
-        "_rev": "1-0f46b36f971aad01a88160a9881f6c45",
         "timestamp": "2025-03-10 00:25:27",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "deb227d91236f5f76590428eb38d57ef",
-        "_rev": "1-e8a0bf10956dda8791605bb932463c4a",
         "timestamp": "2025-03-10 00:25:35",
         "flow_rate": 0.5333333333333333,
         "pulses": 4
     },
     {
-        "_id": "e062dffa13ae056c08dcef0baf3032a3",
-        "_rev": "1-b63c4964463364446d3c4e96f56f49d1",
         "timestamp": "2025-03-10 00:24:49",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "e062dffa13ae056c08dcef0baf3040e0",
-        "_rev": "1-e57ffba6b29fbbc24a3c19ff36b809c9",
         "timestamp": "2025-03-10 00:25:17",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "e134d0751516088f584bbf8f2b717f7f",
-        "_rev": "1-179fa322cda0423f6b6ff381eccd2c08",
         "timestamp": "2025-03-10 00:24:40",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "e134d0751516088f584bbf8f2b718f6e",
-        "_rev": "1-5958f5095299b2954e0fd51f930aab2d",
         "timestamp": "2025-03-10 00:24:41",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "e134d0751516088f584bbf8f2b7198db",
-        "_rev": "1-dae76d20ef92825a03232de5deef5d59",
         "timestamp": "2025-03-10 00:24:45",
         "flow_rate": 1.0666666666666667,
         "pulses": 8
     },
     {
-        "_id": "e134d0751516088f584bbf8f2b71a549",
-        "_rev": "1-2b7710d0401cae4b85d7e1781faf8321",
         "timestamp": "2025-03-10 00:25:15",
         "flow_rate": 1.0666666666666667,
         "pulses": 8

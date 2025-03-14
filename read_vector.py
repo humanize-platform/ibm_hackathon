@@ -50,7 +50,7 @@ model = ChatWatsonx(
 )
 
 
-def getDataFromChroma(question: str):
+def getGuidelineData(question: str):
     chain = (
         {"context": retriever, "question": RunnablePassthrough()}
         | prompt

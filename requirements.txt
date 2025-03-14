@@ -18,3 +18,4 @@ bs4
 pypdf
 twilio
 streamlit
+jq

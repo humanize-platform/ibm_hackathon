@@ -1,14 +1,14 @@
-from cloudant_search import search_cloudant
-from langchain_ibm import ChatWatsonx, WatsonxLLM
-from langchain.prompts import ChatPromptTemplate
+from langchain_ibm import ChatWatsonx
 import os
 import io
 from dotenv import load_dotenv
 import uuid
 from PIL import Image
 
-from read_cloudant import query_water_data
-from read_vector import getDataFromChroma
+from read_vector import getGuidelineData
+
+# from read_vector_cloudant import getUsageData
+from ai_agent_sqlite import getUsageData
 import system_prompt
 from utility import sendWhatsAppMessage
 
@@ -45,14 +45,14 @@ model = ChatWatsonx(
 # Tool to search data from IBM Cloudant DB against the query
 def searchWaterData(query: str):
     """You will retrieve and analyse user's water consumption data based on user's query."""
-    return query_water_data(query)
+    return getUsageData(query)
 
 
 # Tool to crawl few websites and fetch generic weter related questions
 def referWaterGuidlines(query: str):
     """You will retrieve generic weter related questions which user asks for.
     You will call RAG with the user's query to retrieve information."""
-    return getDataFromChroma(query)
+    return getGuidelineData(query)
 
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
