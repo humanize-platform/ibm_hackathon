@@ -55,16 +55,25 @@ def referWaterGuidlines(query: str):
     return getGuidelineData(query)
 
 
+# Tool to notify user or community on some message around SDG 6 water usage
+def notifyCommunity(query: str):
+    """You will receive a message that to be broadcasted over WhatsApp.
+    You will receive the message that to be broadcasted.
+    Send the message over WhatsApp/
+    """
+    return sendWhatsAppMessage(query)
+
+
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
 transfer_to_WaterGuidelineRetriever = create_handoff_tool(
     agent_name="WaterGuidelineRetriever",
-    description="Transfer user to the Water_Guideline_Retriever assistant that can search for water docs.",
+    description="Transfer user to the WaterGuidelineRetriever assistant that can search for water guideline docs.",
 )
 
 # Tool to transfer user to the TestScriptAgent from the HowToAgent
 transfer_to_WaterUsageRetriever = create_handoff_tool(
     agent_name="WaterUsageRetriever",
-    description="Transfer user to the Water_Usage_Retriever assistant that can search for user's water consumption data.",
+    description="Transfer user to the WaterUsageRetriever assistant that can search for user's water consumption records.",
 )
 
 # React agent (Reason + Act) for Water usage record search
@@ -72,6 +81,7 @@ search_water_usage_agent = create_react_agent(
     model,
     [
         searchWaterData,
+        notifyCommunity,
         transfer_to_WaterGuidelineRetriever,
     ],
     prompt=system_prompt.prompt_search_water_usage,
@@ -81,7 +91,7 @@ search_water_usage_agent = create_react_agent(
 # React agent (Reason + Act) for Water Guideline documents search
 search_water_guideline_agent = create_react_agent(
     model,
-    [referWaterGuidlines, transfer_to_WaterUsageRetriever],
+    [referWaterGuidlines, notifyCommunity, transfer_to_WaterUsageRetriever],
     prompt=system_prompt.prompt_search_water_guideline,
     name="WaterGuidelineRetriever",
 )

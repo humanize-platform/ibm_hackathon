@@ -2,6 +2,7 @@ import json
 import sqlite3
 from typing import Dict, List, Any, Union
 
+
 class JSONtoSQLite:
     def __init__(self, db_path: str):
         """Initialize the database connection."""
@@ -29,7 +30,9 @@ class JSONtoSQLite:
 
         if isinstance(data, dict):
             table_name = "main_data"
-            columns = [(key, self._get_sqlite_type(value)) for key, value in data.items()]
+            columns = [
+                (key, self._get_sqlite_type(value)) for key, value in data.items()
+            ]
             schema[table_name] = columns
 
         elif isinstance(data, list) and data:
@@ -37,7 +40,12 @@ class JSONtoSQLite:
             first_item = data[0]
             if isinstance(first_item, dict):
                 columns = [("id", "INTEGER PRIMARY KEY")]
-                columns.extend([(key, self._get_sqlite_type(value)) for key, value in first_item.items()])
+                columns.extend(
+                    [
+                        (key, self._get_sqlite_type(value))
+                        for key, value in first_item.items()
+                    ]
+                )
                 schema[table_name] = columns
 
         return schema
@@ -59,7 +67,9 @@ class JSONtoSQLite:
         """Create tables based on the schema."""
         for table_name, columns in schema.items():
             column_defs = [f'"{col_name}" {col_type}' for col_name, col_type in columns]
-            create_stmt = f"CREATE TABLE IF NOT EXISTS {table_name} ({', '.join(column_defs)})"
+            create_stmt = (
+                f"CREATE TABLE IF NOT EXISTS {table_name} ({', '.join(column_defs)})"
+            )
             self.cursor.execute(create_stmt)
         self.conn.commit()
 
@@ -69,7 +79,14 @@ class JSONtoSQLite:
             table_name = "main_data"
             columns = [col[0] for col in schema[table_name]]
             placeholders = ", ".join(["?"] * len(columns))
-            values = [json.dumps(data[col]) if isinstance(data[col], (dict, list)) else data[col] for col in columns]
+            values = [
+                (
+                    json.dumps(data[col])
+                    if isinstance(data[col], (dict, list))
+                    else data[col]
+                )
+                for col in columns
+            ]
             insert_stmt = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
             self.cursor.execute(insert_stmt, values)
 
@@ -78,10 +95,17 @@ class JSONtoSQLite:
             columns = [col[0] for col in schema[table_name] if col[0] != "id"]
             placeholders = ", ".join(["?"] * len(columns))
             for item in data:
-                values = [json.dumps(item[col]) if isinstance(item[col], (dict, list)) else item[col] for col in columns]
+                values = [
+                    (
+                        json.dumps(item[col])
+                        if isinstance(item[col], (dict, list))
+                        else item[col]
+                    )
+                    for col in columns
+                ]
                 insert_stmt = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({placeholders})"
                 self.cursor.execute(insert_stmt, values)
-        
+
         self.conn.commit()
 
     def load_json_to_sqlite(self, json_path: str) -> Dict[str, List[tuple]]:
@@ -94,6 +118,7 @@ class JSONtoSQLite:
         self.create_tables(schema)
         self.insert_data(data, schema)
         return schema
+
 
 # Example usage
 if __name__ == "__main__":

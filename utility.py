@@ -15,9 +15,8 @@ twilio_client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
 @staticmethod
 def sendWhatsAppMessage(mymessage: str):
-    twilio_client.messages.create(
-        body=mymessage,
-        from_=f"whatsapp:{TWILIO_WHATSAPP_NUMBER}",
-        to=f"whatsapp:{MY_WHATSAPP_NUMBER}",
+    message = twilio_client.messages.create(
+    body=mymessage,
+    from_="whatsapp:+14155238886",
+    to="whatsapp:+919903288470",
     )
-    print("WhatsApp alert sent!")
