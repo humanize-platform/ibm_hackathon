@@ -43,7 +43,7 @@ def search_cloudant(selector):
     client = Cloudant.iam(None, api_key=CLOUDANT_APIKEY, url=CLOUDANT_URL, connect=True)
     db = client[DATABASE_NAME]
     
-    selected_fields = ["timestamp", "flow_rate", "pulses"]
+    selected_fields = ["timestamp", "flow_rate", "pulses", "location"]
 
     # Perform Query
     query_result = db.get_query_result(selector, fields=selected_fields)

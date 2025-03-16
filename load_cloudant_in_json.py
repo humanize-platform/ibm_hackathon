@@ -11,7 +11,7 @@ from langchain.schema import Document
 
 load_dotenv()
 
-query = {"timestamp": {"$gt": "2024-03-10"}}
+query = {"pulses": {"$gt": 0}}
 
 results = search_cloudant(query)
 with open("cloudant_query.json", "w") as file:
