@@ -1,5 +1,10 @@
 # ibm_hackathon
 
+TODO:
+1. Deploy the app
+2. Fine tune other features
+3. ReadMe update
+
 1. Call load_cloudant_in_json.py
 2. Call json_to_sqlite.py
 3. streamlit run system_chat.py

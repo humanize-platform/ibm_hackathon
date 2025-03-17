@@ -10,7 +10,7 @@ from read_vector import getGuidelineData
 # from read_vector_cloudant import getUsageData
 from ai_agent_sqlite import getUsageData
 import system_prompt
-from utility import sendWhatsAppMessage
+from utility import sendWhatsAppMessage, getQualityData
 
 load_dotenv()
 
@@ -40,6 +40,14 @@ model = ChatWatsonx(
     project_id=os.getenv("WATSONX_PROJECTKEY"),
     params=parameters,
 )
+
+
+# Tool to analyse PH and TDS values from the water data
+def analysePH(query: str):
+    """You will analyse user's water PH and TDS count and will explain in simple terms.
+    You will also provide the user with the information on how to maintain the PH and TDS count in water.
+    Provide low cost remedies to improve the PH and TDS count in water."""
+    return getQualityData(query)
 
 
 # Tool to search data from IBM Cloudant DB against the query
@@ -82,6 +90,7 @@ search_water_usage_agent = create_react_agent(
     [
         searchWaterData,
         notifyCommunity,
+        analysePH,
         transfer_to_WaterGuidelineRetriever,
     ],
     prompt=system_prompt.prompt_search_water_usage,
@@ -91,7 +100,7 @@ search_water_usage_agent = create_react_agent(
 # React agent (Reason + Act) for Water Guideline documents search
 search_water_guideline_agent = create_react_agent(
     model,
-    [referWaterGuidlines, notifyCommunity, transfer_to_WaterUsageRetriever],
+    [referWaterGuidlines, notifyCommunity, analysePH, transfer_to_WaterUsageRetriever],
     prompt=system_prompt.prompt_search_water_guideline,
     name="WaterGuidelineRetriever",
 )

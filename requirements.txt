@@ -19,3 +19,4 @@ pypdf
 twilio
 streamlit
 jq
+tavily-python
