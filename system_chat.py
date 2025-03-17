@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st 
 from swarm_agents import app
 import re
 import json
@@ -10,20 +10,17 @@ st.set_page_config(
     page_title="Water Consumption and Awareness building Assistant", layout="wide"
 )
 
-
 # Function to generate and store a unique User ID (U-ID)
 def get_user_id():
     if "user_id" not in st.session_state:
         st.session_state.user_id = str(uuid.uuid4())  # Generate a unique ID
     return st.session_state.user_id
 
-
 # Function to format AI response
 def format_response(response_text):
     response_text = response_text.replace("\\n\\n", "\\n")
     response_text = response_text.replace("\\n", "<br>")
     return response_text
-
 
 # Adjust layout to remove extra white space
 st.markdown(
@@ -40,14 +37,21 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-chart_url = "https://dataplatform.cloud.ibm.com/dataview/visualizations/e531dac0-a65a-40f2-8e07-87b6d5c6e88c/exports/default?project_id=df19bec2-95cf-45f4-a536-1cd2af15b881&export_type=html#/output"
-st.markdown(f"[Click here to view the chart 🔗]({chart_url})", unsafe_allow_html=True)
+# Provide external useful links
+st.markdown(
+    """
+    **Useful Resources 🌍**  
+    [SDG 6 Dashboard](https://dashboards.sdgindex.org/map/goals/SDG6) | 
+    [Global Water Online](https://www.globalwater.online/global-water/) | 
+    [Earth Map](https://earthmap.org/?aoi=global)
+    """,
+    unsafe_allow_html=True,
+)
 
 # Initialize chat history
 if "chat_history" not in st.session_state:
     welcome_message = "Welcome to Water Consumption and Awareness building Assistant! How can I help you today?"
     st.session_state.chat_history = [("assistant", welcome_message)]
-
 
 # Extract latest Human and AI messages
 def extract_relevant_messages(message_obj):
@@ -68,7 +72,6 @@ def extract_relevant_messages(message_obj):
     last_ai_message = ai_matches[-1] if ai_matches else None
 
     return last_human_message, last_ai_message
-
 
 # Chat Function
 def chat():
@@ -124,7 +127,6 @@ def chat():
                         time.sleep(0.02)
 
                 st.session_state.chat_history.append(("assistant", streamed_response))
-
 
 if __name__ == "__main__":
     chat()
