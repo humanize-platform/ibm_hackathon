@@ -11,6 +11,7 @@ from read_vector import getGuidelineData
 from ai_agent_sqlite import getUsageData
 import system_prompt
 from utility import sendWhatsAppMessage, getQualityData
+from langchain_core.tools import tool
 
 load_dotenv()
 
@@ -27,7 +28,7 @@ os.environ["LANGCHAIN_PROJECT"] = "IBM-HACKATHON-HUMANIZE"
 
 parameters = {
     "decoding_method": "sample",
-    "max_new_tokens": 100,
+    "max_new_tokens": 500,
     "min_new_tokens": 1,
     "temperature": 0.5,
     "top_k": 50,
@@ -43,6 +44,7 @@ model = ChatWatsonx(
 
 
 # Tool to analyse PH and TDS values from the water data
+@tool
 def analysePH(query: str):
     """You will analyse user's water PH and TDS count and will explain in simple terms.
     You will also provide the user with the information on how to maintain the PH and TDS count in water.
@@ -51,12 +53,14 @@ def analysePH(query: str):
 
 
 # Tool to search data from IBM Cloudant DB against the query
+@tool
 def searchWaterData(query: str):
     """You will retrieve and analyse user's water consumption data based on user's query."""
     return getUsageData(query)
 
 
 # Tool to crawl few websites and fetch generic weter related questions
+@tool
 def referWaterGuidlines(query: str):
     """You will retrieve generic weter related questions which user asks for.
     You will call RAG with the user's query to retrieve information."""
@@ -64,6 +68,7 @@ def referWaterGuidlines(query: str):
 
 
 # Tool to notify user or community on some message around SDG 6 water usage
+@tool
 def notifyCommunity(query: str):
     """You will receive a message that to be broadcasted over WhatsApp.
     You will receive the message that to be broadcasted.
