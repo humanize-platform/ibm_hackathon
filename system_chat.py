@@ -1,14 +1,30 @@
 import streamlit as st 
-from swarm_agents import app
+from swarm_agents import app, invoke_with_language
 import re
 import json
 import time
 import uuid
+import os
+
+# Load language configuration from JSON file
+def load_language_map():
+    language_file = "language_config.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r", encoding="utf-8") as file:
+            return json.load(file)
+    else:
+        st.error("Language configuration file not found!")
+        return {}
+    
+language_map = load_language_map()
 
 # Set page configuration
 st.set_page_config(
     page_title="Water Consumption and Awareness building Assistant", layout="wide"
 )
+
+selected_language = st.sidebar.selectbox("Choose Language:", ["English", "Spanish", "French", "Hindi", "Bengali", "Tamil"])
+
 
 # Function to generate and store a unique User ID (U-ID)
 def get_user_id():
@@ -32,26 +48,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.markdown(
-    "<h1 style='font-size: 25px;'>Water Consumption and Awareness building Assistant 🤖</h1>",
-    unsafe_allow_html=True,
-)
+st.markdown(f"<h1 style='font-size: 25px;'>{language_map[selected_language]['title']}</h1>", unsafe_allow_html=True)
 
 # Provide external useful links
-st.markdown(
-    """
-    **Useful Resources 🌍**  
-    [SDG 6 Dashboard](https://dashboards.sdgindex.org/map/goals/SDG6) | 
-    [Global Water Online](https://www.globalwater.online/global-water/) | 
-    [Earth Map](https://earthmap.org/?aoi=global)
-    """,
-    unsafe_allow_html=True,
-)
+st.markdown(language_map[selected_language]["resources"], unsafe_allow_html=True)
 
 # Initialize chat history
 if "chat_history" not in st.session_state:
-    welcome_message = "Welcome to Water Consumption and Awareness building Assistant! How can I help you today?"
-    st.session_state.chat_history = [("assistant", welcome_message)]
+    st.session_state.chat_history = [("assistant", language_map[selected_language]["welcome"])]
+
 
 # Extract latest Human and AI messages
 def extract_relevant_messages(message_obj):
@@ -82,13 +87,13 @@ def chat():
             st.markdown(content, unsafe_allow_html=True)
 
     # Capture user input
-    user_input = st.chat_input("Ask a question...")
+    user_input = st.chat_input(language_map[selected_language]['ask'])
 
     # Dynamic U-ID for each user
     user_id = get_user_id()
 
     # Generate dynamic config per user
-    config = {"configurable": {"thread_id": user_id}}
+    config = {"configurable": {"thread_id": user_id, "language": selected_language}}
 
     # Handle user input
     if user_input:
@@ -97,9 +102,13 @@ def chat():
             st.markdown(user_input)
 
         # Invoke the RAG Agent
-        with st.spinner("Thinking..."):
-            response = app.invoke(
-                {"messages": [{"role": "user", "content": user_input}]}, config=config
+        with st.spinner("Thinking..."):            
+            response = invoke_with_language(
+                {
+                    "messages": [{"role": "user", "content": user_input}],
+                    "language": selected_language
+                },
+                config=config
             )
             user_message, final_ai_message = extract_relevant_messages(response)
 

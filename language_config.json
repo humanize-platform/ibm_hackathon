@@ -1,0 +1,44 @@
+{
+    "English": {
+        "title": "Water Consumption and Awareness Assistant 🤖",
+        "ask": "Ask a question...",
+        "thinking": "Thinking...",
+        "welcome": "Welcome to Water Consumption and Awareness building Assistant! How can I help you today?",
+        "resources": "**Useful Resources 🌍**  \n[SDG 6 Dashboard](https://dashboards.sdgindex.org/map/goals/SDG6) | [Global Water Online](https://www.globalwater.online/global-water/) | [Earth Map](https://earthmap.org/?aoi=global)"
+    },
+    "Spanish": {
+        "title": "Asistente de Consumo de Agua y Concienciación 🤖",
+        "ask": "Haz una pregunta...",
+        "thinking": "Pensando...",
+        "welcome": "¡Bienvenido al asistente de consumo de agua y concienciación! ¿Cómo puedo ayudarte hoy?",
+        "resources": "**Recursos Útiles 🌍**  \n[SDG 6 Tablero](https://dashboards.sdgindex.org/map/goals/SDG6) | [Global Water Online](https://www.globalwater.online/global-water/) | [Earth Map](https://earthmap.org/?aoi=global)"
+    },
+    "French": {
+        "title": "Assistant de Consommation d'Eau et de Sensibilisation 🤖",
+        "ask": "Posez une question...",
+        "thinking": "Réflexion...",
+        "welcome": "Bienvenue sur l'assistant de consommation d'eau et de sensibilisation ! Comment puis-je vous aider aujourd'hui?",
+        "resources": "**Ressources Utiles 🌍**  \n[SDG 6 Tableau de Bord](https://dashboards.sdgindex.org/map/goals/SDG6) | [Global Water Online](https://www.globalwater.online/global-water/) | [Earth Map](https://earthmap.org/?aoi=global)"
+    },
+    "Hindi": {
+        "title": "जल उपभोग और जागरूकता सहायक 🤖",
+        "ask": "एक प्रश्न पूछें...",
+        "thinking": "सोच रहा हूँ...",
+        "welcome": "जल उपभोग और जागरूकता सहायक में आपका स्वागत है! आज मैं आपकी कैसे मदद कर सकता हूँ?",
+        "resources": "**उपयोगी संसाधन 🌍**  \n[एसडीजी 6 डैशबोर्ड](https://dashboards.sdgindex.org/map/goals/SDG6) | [ग्लोबल वॉटर ऑनलाइन](https://www.globalwater.online/global-water/) | [अर्थ मैप](https://earthmap.org/?aoi=global)"
+    },
+    "Bengali": {
+        "title": "জল ব্যবহার এবং সচেতনতা সহায়ক 🤖",
+        "ask": "একটি প্রশ্ন জিজ্ঞাসা করুন...",
+        "thinking": "ভাবা হচ্ছে...",
+        "welcome": "জল ব্যবহার এবং সচেতনতা সহায়কে আপনাকে স্বাগতম! আমি আজ আপনাকে কীভাবে সাহায্য করতে পারি?",
+        "resources": "**উপকারী সম্পদ 🌍**  \n[এসডিজি 6 ড্যাশবোর্ড](https://dashboards.sdgindex.org/map/goals/SDG6) | [গ্লোবাল ওয়াটার অনলাইন](https://www.globalwater.online/global-water/) | [আর্থ ম্যাপ](https://earthmap.org/?aoi=global)"
+    },
+    "Tamil": {
+        "title": "நீர் பயன்பாடு மற்றும் விழிப்புணர்வு உதவியாளர் 🤖",
+        "ask": "ஒரு கேள்வி கேளுங்கள்...",
+        "thinking": "யோசிக்கிறது...",
+        "welcome": "நீர் பயன்பாடு மற்றும் விழிப்புணர்வு உதவியாளருக்கு வரவேற்கிறோம்! இன்று நான் உங்களை எவ்வாறு உதவலாம்?",
+        "resources": "**பயனுள்ள ஆதாரங்கள் 🌍**  \n[SDG 6 டாஷ்போர்டு](https://dashboards.sdgindex.org/map/goals/SDG6) | [குளோபல் வாட்டர் ஆன்லைன்](https://www.globalwater.online/global-water/) | [பூமி வரைபடம்](https://earthmap.org/?aoi=global)"
+    }
+}

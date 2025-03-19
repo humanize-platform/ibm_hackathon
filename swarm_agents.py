@@ -119,6 +119,17 @@ workflow = create_swarm(
 
 app = workflow.compile(checkpointer=checkpointer)
 
+def invoke_with_language(input_data, config=None):
+    language = input_data.get("language", "English")
+    messages = input_data.get("messages", [])
+    
+    # Add language instruction to the first message
+    if messages and len(messages) > 0:
+        first_message = messages[0]
+        language_instruction = f"Please respond in {language}. "
+        first_message["content"] = language_instruction + first_message["content"]
+    
+    return app.invoke({"messages": messages}, config=config)
 
 # Dynamically generate a thread_id for each user session
 def get_config():
