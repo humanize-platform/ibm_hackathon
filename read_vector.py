@@ -8,12 +8,14 @@ from langchain.schema.output_parser import StrOutputParser
 
 import os
 
+
 embeddings = WatsonxEmbeddings(
     model_id=EmbeddingTypes.IBM_SLATE_30M_ENG.value,
     url="https://us-south.ml.cloud.ibm.com",
     apikey=os.getenv("WATSONX_APIKEY"),
     project_id=os.getenv("WATSONX_PROJECTKEY"),
 )
+
 
 # Load existing Chroma DB from folder
 vectorstore = Chroma(
@@ -43,7 +45,7 @@ parameters = {
 }
 
 model = ChatWatsonx(
-    model_id="mistralai/mistral-large",
+    model_id="ibm/granite-3-8b-instruct",
     url="https://us-south.ml.cloud.ibm.com",
     project_id=os.getenv("WATSONX_PROJECTKEY"),
     params=parameters,
