@@ -2,12 +2,12 @@
 ## System Overview
 
 Our AI-driven solution is a **low-cost, plug-and-play water usage tracker and intelligent advisory system** that enables households to:
-•	Monitor real-time water consumption via a sensor attached to **water taps**.
-•	Detect leaks and anomalies to reduce wastage.
-•	Analyze water quality based on pH and TDS values.
-•	Receive personalized recommendations on sustainable water practices.
-•	Access globally recognized water guidelines from the UN and WHO.
-•	Receive multilingual AI-generated insights and alerts for accessibility.
+- Monitor real-time water consumption via a sensor attached to **water taps**.
+- Detect leaks and anomalies to reduce wastage.
+- Analyze water quality based on pH and TDS values.
+- Receive personalized recommendations on sustainable water practices.
+- Access globally recognized water guidelines from the UN and WHO.
+- Receive multilingual AI-generated insights and alerts for accessibility.
 
 It leverages:
 - **IBM Cloudant** for schema-less NoSQL storage
@@ -185,7 +185,3 @@ python read_vector.py
 streamlit run system_chat.py
 ```
 ---
-
-##  License
-
-MIT License
