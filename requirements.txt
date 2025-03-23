@@ -20,4 +20,3 @@ twilio
 streamlit
 jq
 tavily-python
-lgpio

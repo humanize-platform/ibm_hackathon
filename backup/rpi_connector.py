@@ -1,5 +1,5 @@
 # Below code is executed within Raspberry Pi to read water flow sensor data and send it to Kafka Producer.
-import lgpio
+import lgpio # type: ignore
 import time
 from kafka_producer import producer
 import json
