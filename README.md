@@ -17,6 +17,8 @@ It leverages:
 - **Streamlit** for interactive UI
 
 ---
+## Harsware setup used for prototyping
+![alt text](setup.png)
 
 ## Visual representation data ingestion
 
